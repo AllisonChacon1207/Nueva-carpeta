@@ -58,7 +58,7 @@ export default defineConfig((/* ctx */) => {
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
-      
+
       vitePlugins: [
         ['vite-plugin-checker', {
           eslint: {
@@ -134,6 +134,8 @@ export default defineConfig((/* ctx */) => {
       // pwaExtendInjectManifestOptions (cfg) {}
     },
 
+
+
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
       workboxMode: 'GenerateSW' // 'GenerateSW' or 'InjectManifest'
@@ -146,6 +148,7 @@ export default defineConfig((/* ctx */) => {
       // extendGenerateSWOptions (cfg) {},
       // extendInjectManifestOptions (cfg) {}
     },
+
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova
     cordova: {

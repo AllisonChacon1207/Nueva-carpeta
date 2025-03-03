@@ -2,11 +2,13 @@
     <q-layout view="lHh Lpr lff">
       <q-header elevated class="bg-cyan-8">
         <q-toolbar>
-          <q-toolbar-title>Hacer una copia</q-toolbar-title>
+          <q-toolbar-title>REGISTRO VEHICULAR</q-toolbar-title>
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
 <!--------------------------------------------------------------------------------->
-               <!-- Botón de instalación -->
-        <q-btn v-if="showInstallButton" @click="installPWA" label="Instalar App" color="positive" />
+<div>
+    <!-- Botón de instalación PWA -->
+    <q-btn v-if="showInstallButton" @click="installPWA" label="Instalar App" color="positive" />
+  </div>
 <!--------------------------------------------------------------------------------->
         </q-toolbar>
       </q-header>
@@ -50,13 +52,13 @@
           </q-list><!------------------------------------------------------------------------------------------>
         </q-scroll-area><!------------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------->
-        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+      <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
-            <div class="text-weight-bold">USUARIO</div>
-            <div>Registro Vehicular</div>
+            <div class="text-weight-bold">REGISTRO VEHICULAR</div>
+            <div>EMILIO GARCIA</div>
           </div>
         </q-img>
       </q-drawer>
@@ -70,46 +72,46 @@
 </template> <!--------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------->
+
 <script>
-import { ref, onMounted } from 'vue';
 
 export default {
-  setup() {
-    const drawer = ref(false);
-    const showInstallButton = ref(false);
-    let deferredPrompt = null;
 
-    // Evento para detectar cuándo la PWA puede ser instalada
-    onMounted(() => {
-      window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault(); // Evita que el prompt se muestre automáticamente
-        deferredPrompt = event; // Guarda el evento para usarlo más tarde
-        showInstallButton.value = true; // Muestra el botón de instalación
-      });
-    });
-
-    // Método para instalar la PWA
-    const installPWA = () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt(); // Muestra el prompt de instalación
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('Usuario aceptó la instalación');
-          } else {
-            console.log('Usuario rechazó la instalación');
-          }
-          deferredPrompt = null; // Limpia el evento
-          showInstallButton.value = false; // Oculta el botón
-        });
-      }
-    };
+  data() {
 
     return {
-      drawer,
-      showInstallButton,
-      installPWA,
+      showInstallButton: false, // Controla la visibilidad del botón
+      deferredPrompt: null, // Guardamos el objeto del evento beforeinstallprompt
     };
   },
+  mounted() {
+    // Escucha el evento beforeinstallprompt
+    window.addEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+  },
+
+  methods: {
+    handleBeforeInstallPrompt(event) {
+      // Prevenir que se muestre el diálogo de instalación automáticamente
+      event.preventDefault();
+      this.deferredPrompt = event; // Guardamos el evento para usarlo más tarde
+      this.showInstallButton = true; // Mostramos el botón de instalación
+    },
+    installPWA() {
+      // Si el usuario hace clic en el botón, mostramos el prompt para instalar la PWA
+      if (this.deferredPrompt) {
+        this.deferredPrompt.prompt(); // Mostrar el diálogo de instalación
+        this.deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('El usuario ha aceptado la instalación de la PWA');
+          } else {
+            console.log('El usuario ha rechazado la instalación de la PWA');
+          }
+          this.deferredPrompt = null; // Limpiar el evento
+          this.showInstallButton = false; // Ocultar el botón después de intentar la instalación
+        });
+      }
+    }
+  }
 };
 
 </script>

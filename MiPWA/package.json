@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "@quasar/ssr": "^0.0.2",
+    "express": "^4.21.2",
     "html2canvas": "^1.4.1",
     "qrcode": "^1.5.4",
     "qrcode.vue": "^3.6.0",
