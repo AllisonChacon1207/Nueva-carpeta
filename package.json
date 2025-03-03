@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/AllisonChacon1207/testQR#readme",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "workbox-cli": "^7.3.0"
   },
   "description": ""
 }
