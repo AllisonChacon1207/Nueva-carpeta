@@ -8,7 +8,6 @@
   },
   "name": "testqr",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
@@ -26,5 +25,6 @@
   "homepage": "https://github.com/AllisonChacon1207/testQR#readme",
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "description": ""
 }
