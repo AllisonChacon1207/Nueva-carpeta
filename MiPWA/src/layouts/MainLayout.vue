@@ -46,7 +46,7 @@
                 <q-icon name="drafts" />
               </q-item-section>
               <q-item-section>
-                OTROS.....
+                Mi API
               </q-item-section>
             </q-item>
           </q-list><!------------------------------------------------------------------------------------------>
