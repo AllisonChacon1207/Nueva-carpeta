@@ -6,7 +6,8 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') }, // Ruta principal
       { path: '/MiPWA/src/pages/MiPrimero.vue', component: () => import('pages/MiPrimero.vue') }, // Ruta para MiPrimero.vue
       { path: '/MiPWA/src/pages/MiSegundo.vue', component: () => import('pages/MiSegundo.vue') }, // Ruta para MiSegundo.vue
-      
+      { path: '/MiPWA/src/pages/tablalmacen.vue', component: () => import('src/pages/TablaAlmacen.vue') }, // Ruta para MiSegundo.vue
+
     ],
   },
 
